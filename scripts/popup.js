@@ -28,7 +28,14 @@ document.getElementById('font-picker').addEventListener('click', event => sendFo
 // READING-LIST ======================================================= //
 // TODO: Write a function to send a message containing the current page's title & url to our background script
 function addItemToList() {
+  btnPostToAPI.disabled = true; // disable the button while processing
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.runtime.sendMessage({ action: 'postItem', title: tabs[0].title, url: tabs[0].url }, (data) => {
+      btnPostToAPI.disabled = false; // reactivate the button once finished
+    });
+  });
 }
 
 // TODO: Add an event listener to trigger the function above when clicking the 'Add to Read List' button
-
+const btnPostToAPI = document.getElementById('post-to-api')
+btnPostToAPI.addEventListener('click', event => addItemToList());
