@@ -1,22 +1,28 @@
 {
     "manifest_version": 2,
-    "name": "My first Chrome Extension",
-    "description": "Chrome extension workshop for Le Wagon Tokyo",
-    "author": "Your name",
+    "name": "Zach's Extension",
+    "description": "Cheesify Chrome extension",
+    "author": "Zach",
     "version": "1",
     "permissions": ["tabs"],
+    // link cheesify.js:
     "content_scripts": [
       {
         "matches": [
           "<all_urls>"
         ],
-        "js": ["scripts/cheesify.js"]
+        "js": [
+          "scripts/cheesify.js",
+          "scripts/font-picker.js"
+        ]
       }
     ],
+    // link popup.html:
     "browser_action": {
       "default_popup": "popup.html",
       "default_title": "My first Chrome Extension"
     },
+
     "icons": {
       "16": "images/icon16.png",
       "32": "images/icon32.png",
@@ -25,4 +31,3 @@
     }
 }
 
-    // run cheesify file on all pages:
