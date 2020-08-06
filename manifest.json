@@ -5,7 +5,7 @@
     "author": "Zach",
     "version": "1",
     "permissions": ["tabs"],
-    // link cheesify.js:
+    // link content script (cheesify.js, font-picker.js):
     "content_scripts": [
       {
         "matches": [
@@ -17,12 +17,12 @@
         ]
       }
     ],
-    // link background.js:
+    // link background script (background.js):
     "background": {
       "scripts": ["scripts/background.js"],
       "persistent": false
     },
-    // link popup.html:
+    // link browser action (popup.html):
     "browser_action": {
       "default_popup": "popup.html",
       "default_title": "My first Chrome Extension"

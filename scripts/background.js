@@ -4,7 +4,7 @@
 
 const postBinUrl = 'https://postb.in/1596635470640-1886278439778' // 👈 Paste your PostBin url here
 
-// 2: Create function to make a POST request to PostBin using fetch()
+// 2: MAIN FUNCTION (make a POST request to PostBin using fetch()):
 function postItem(title, url) {
   return fetch(postBinUrl, {
     method: 'POST',
@@ -13,7 +13,7 @@ function postItem(title, url) {
   })
 }
 
-// 1: Add a message listener to receive the active page information sent by popup.js and send it to PostBin
+// 1. RECEIVE MESSAGE (from popup.js) & call main function
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.action === 'postItem') postItem(request.title, request.url).then(response => sendResponse(response)); // send to popup.js to reactive the button?

@@ -1,5 +1,6 @@
 // TODO: Uncomment the code below
 
+// 2: MAIN FUNCTION:
 let active = false;
 
 function toggleFontPicker() {
@@ -18,7 +19,7 @@ const getFont = (event) => {
   document.getElementById('font-picker-box').innerText = window.getComputedStyle(event.target).fontFamily.split(",")[0];
 }
 
-// 1: Add a listener using runtime.onMessage.addListener to trigger the toggleFontPicker() action when clicking the button in popup.html
+// 1. RECEIVE MESSAGE (from popup.js) & call main function
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.action === 'font') toggleFontPicker();
